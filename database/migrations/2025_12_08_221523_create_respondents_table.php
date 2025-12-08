@@ -9,10 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('respondents', function (Blueprint $table) {
+        Schema::create('respondets', function (Blueprint $table){
             $table->id();
+            $table->string('name')->nullable();
+            $table->enum('gender', ['laki-laki','perempuan '])->nullable();
+            $table->integer('age')->nullable();
+            $table->string('occupation')->nullable();
+            $table->string('education')->nullable();
+            $table->decimal('weight',5,2)->nullable(); // kg
+            $table->decimal('height',5,2)->nullable(); // cm
             $table->timestamps();
         });
     }

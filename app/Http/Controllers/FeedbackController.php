@@ -15,4 +15,7 @@ class FeedbackController extends Controller
         ]);
         return back()->with('success', 'Terima kasih atas feedback Anda!');
     }
+    public function create(){
+        return view('feedback');
+    }
 }

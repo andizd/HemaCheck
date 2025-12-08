@@ -12,3 +12,4 @@ Route::post('/screening', [ScreeningController::class, 'sotre'])->name('screenin
 Route::get('/screening/{screening}', [ScreeningController::class, 'result'])->name('screening.result');
 
 Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
+Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback');

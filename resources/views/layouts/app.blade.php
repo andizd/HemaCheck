@@ -8,17 +8,21 @@
 </head>
 <body class="bg-gray-50">
   <nav class="bg-white shadow">
-    <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between">
-      <a href="{{ route('home') }}" class="text-xl font-bold text-red-600">AnemiaCare</a>
+    <div class="px-12 py-8 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <img src="{{ asset('img/umi.png') }}" alt="Universitas Muslim Indonesia" class="h-10">
+        <img src="{{asset('img/kemenkes.png')}}" alt="Kementrian Kesehatan" class="h-10">
+        <a href="{{ route('home') }}" class="text-xl font-bold text-red-600">HemaCheck</a>
+      </div>
       <div class="space-x-4">
         <a href="{{ route('home') }}">Beranda</a>
-        <a href="{{ route('screening.create') }}">Screening Anemia</a>
+        <a href="{{ route('screening.create') }}">Screening</a>
         <a href="{{ route('feedback') }}">Saran & Masukkan</a>
       </div>
     </div>
   </nav>
 
-  <main class="max-w-4xl mx-auto p-6">
+  <main class="px-12 py-8">
     @if(session('success'))
       <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4">{{ session('success') }}</div>
     @endif
@@ -27,7 +31,7 @@
   </main>
 
   <footer class="text-center text-sm text-gray-500 py-6">
-    &copy; {{ date('Y') }} AnemiaCare
+    &copy; {{ date('Y') }} HemaCheck. All rights reserved.
   </footer>
 </body>
 </html>

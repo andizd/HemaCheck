@@ -3,15 +3,15 @@
 @section('content')
 
 {{-- HERO SECTION --}}
-<section class="bg-gradient-to-r from-teal-50 to-blue-50 rounded-xl p-10 shadow-md mb-10 flex flex-col md:flex-row items-center gap-10">
+<section class="bg-gradient-to-r from-teal-50 to-blue-50 rounded-xl p-10 shadow-md mb-10 flex flex-col md:flex-row items-center gap-10" data-aos="fade-up">
     
     <div class="flex-1">
-        <h1 class="text-4xl font-extrabold text-teal-700 leading-tight">
+        <h1 class="text-4xl font-extrabold text-teal-700 leading-tight" data-aos="fade-right" data-aos-delay="100">
             Cek Risiko Anemia Anda<br>
             Dengan Cepat dan Mudah
         </h1>
 
-        <p class="text-gray-600 mt-4 text-lg">
+        <p class="text-gray-600 mt-4 text-lg" data-aos="fade-right" data-aos-delay="100">
             Anemia adalah kondisi ketika tubuh kekurangan sel 
             darah merah atau hemoglobin sehingga oksigen tidak 
             tersalurkan dengan optimal. Banyak orang tidak menyadari 
@@ -20,7 +20,7 @@
         </p>
 
         <a href="{{ route('screening.create') }}" 
-           class="inline-block mt-6 bg-red-600 hover:bg-red-700 transition text-white px-6 py-3 rounded-lg font-semibold shadow">
+           class="inline-block mt-6 bg-red-600 hover:bg-red-700 transition text-white px-6 py-3 rounded-lg font-semibold shadow" data-aos="zoom-in" data-aos-delay="200">
             Mulai Screening Sekarang
         </a>
     </div>
@@ -34,21 +34,27 @@
 </section>
 
 {{-- INFORMASI ANEMIA --}}
-<section class="mb-12">
-    <h2 class="text-2xl font-bold text-gray-800 mb-4">Apa itu Anemia?</h2>
+<section class="mb-12" data-aos="fade-up">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4 px-10">Apa itu Anemia?</h2>
 
-    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+    <div class="bg-white p-10 rounded-xl shadow-sm border border-gray-100">
         <p class="text-gray-700 leading-relaxed">
             Menurut World Health Organization (WHO), anemia adalah 
             kondisi ketika kadar hemoglobin berada di bawah batas 
             normal berdasarkan usia dan jenis kelamin. Kekurangan 
             hemoglobin menyebabkan distribusi oksigen ke jaringan 
-            menurun.
+            menurun. Menurut World Health Organization (WHO) edisi 2025, anemia tetap menjadi masalah kesehatan global: diperkirakan 30.7% wanita usia 15-49 tahun menderita anemia.
         </p>
         <img src="{{ asset('img/dataanemia.png') }}" alt="Data Anemia">
-        <p class="text-gray-700 leading-relaxed">
-            Menurut World Health Organization (WHO) edisi 2025, anemia tetap menjadi masalah kesehatan global: diperkirakan 30.7% wanita usia 15-49 tahun menderita anemia.
-        </p>
+        <div class="mt-6 text-center" data-aos="zoom-in">
+            <p class="text-gray-500 text-sm mb-1">Prevalensi Anemia Global (WHO 2025)</p>
+            <h3 class="text-5xl font-extrabold text-red-600">
+                <span id="whoCounter" data-target="30.7">0</span>%
+            </h3>
+            <p class="text-gray-600 mt-2">
+                Wanita usia 15-49 tahun mengalami anemia
+            </p>
+        </div>
     </div>
 </section>
 
@@ -59,7 +65,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
         {{-- CARD 1 — Kekurangan Zat Besi --}}
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100">
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100" data-aos="fade-up" data-aos-delay="100">
             <div class="text-red-600 mb-3 text-center">
                 <img src="img/zat besi.png" alt="Zat Besi" class="h-16 w-16 mx-auto">
             </div>
@@ -72,7 +78,7 @@
         </div>
 
         {{-- CARD 2 — Kekurangan Vitamin B12 / Folat --}}
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100">
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100" data-aos="fade-up" data-aos-delay="200">
             <div class="text-blue-600 mb-3 text-center">
                 <img src="img/vitamin b12.png" alt="Vitamin B12" class="h-16 w-18 mx-auto">
             </div>
@@ -85,7 +91,7 @@
         </div>
 
         {{-- CARD 3 — Kehilangan Darah --}}
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100">
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100" data-aos="fade-up" data-aos-delay="300">
             <div class="text-purple-600 mb-3 text-center">
                 <img src="img/darah.png" alt="Kehilangan Darah" class="h-16 w-14 mx-auto">
             </div>
@@ -99,7 +105,7 @@
 
         <div class="md:col-span-3 flex justify-center gap-6 px-32">
             {{-- CARD 4 — Penyakit Kronis --}}
-            <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100 md:col-span-1">
+            <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100 md:col-span-1" data-aos="fade-up" data-aos-delay="400">
                 <div class="text-green-600 mb-3 text-center">
                     <img src="img/ginjal.png" alt="Gagal Ginjal" class="h-16 w-16 mx-auto">
                 </div>
@@ -112,7 +118,7 @@
             </div>
     
             {{-- CARD 5 — Infeksi / Kelainan Genetik --}}
-            <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100 md:col-span-1">
+            <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100 md:col-span-1" data-aos="fade-up" data-aos-delay="500">
                 <div class="text-yellow-600 mb-3 text-center">
                     <img src="img/infeksi.png" alt="Infeksi" class="h-16 w-18 mx-auto">
                 </div>
@@ -134,7 +140,7 @@
     <div class="max-w-3xl mx-auto space-y-10">
 
         {{-- STEP 1 --}}
-        <div class="flex items-start gap-5">
+        <div class="flex items-start gap-5" data-aos="fade-right">
             <div class="flex flex-col items-center">
                 <div class="w-12 h-12 bg-green-600 text-white flex items-center justify-center rounded-full shadow">
                     1
@@ -152,7 +158,7 @@
         </div>
 
         {{-- STEP 2 --}}
-        <div class="flex items-start gap-5">
+        <div class="flex items-start gap-5" data-aos="fade-left">
             <div class="flex flex-col items-center">
                 <div class="w-12 h-12 bg-yellow-500 text-white flex items-center justify-center rounded-full shadow">
                     2
@@ -170,7 +176,7 @@
         </div>
 
         {{-- STEP 3 --}}
-        <div class="flex items-start gap-5">
+        <div class="flex items-start gap-5" data-aos="fade-right">
             <div class="flex flex-col items-center">
                 <div class="w-12 h-12 bg-blue-600 text-white flex items-center justify-center rounded-full shadow">
                     3
@@ -188,7 +194,7 @@
         </div>
 
         {{-- STEP 4 --}}
-        <div class="flex items-start gap-5">
+        <div class="flex items-start gap-5" data-aos="fade-left">
             <div class="flex flex-col items-center">
                 <div class="w-12 h-12 bg-purple-600 text-white flex items-center justify-center rounded-full shadow">
                     4
@@ -208,7 +214,7 @@
 </section>
 
 {{-- CTA SECTION --}}
-<section class="text-center mb-12">
+<section class="text-center mb-12" data-aos="zoom-in">
     <h2 class="text-2xl font-bold text-gray-800 mb-3">Siap mulai screening?</h2>
     <p class="text-gray-600 mb-5">Jawab beberapa pertanyaan untuk mengetahui potensi anemia Anda.</p>
 

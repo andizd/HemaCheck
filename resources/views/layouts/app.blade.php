@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Anemia Screening</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50">
-  <nav class="bg-white shadow">
+  <nav class="sticky top-0 z-50 bg-white/80 shadow border-b border-gray-200 transition-all duration-300"
+  style="backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
     <div class="px-24 py-4 flex justify-between items-center">
       <div class="flex items-center space-x-12">
         <a href="{{ route('home') }}" class="text-xl font-bold text-red-600">HemaCheck</a>  
@@ -58,6 +60,46 @@
         © {{ date('Y') }} HemaCheck — Universitas Muslim Indonesia
     </div>
   </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 900,
+      easing: 'ease-out-cubic',
+      once: true
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const counter = document.getElementById("whoCounter");
+        let started = false;
+
+        const animateCounter = () => {
+            const target = parseFloat(counter.dataset.target);
+            let current = 0;
+            const increment = target / 60;
+
+            const update = () => {
+                current += increment;
+                if (current < target) {
+                    counter.innerText = current.toFixed(1);
+                    requestAnimationFrame(update);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            update();
+        };
+
+        window.addEventListener("scroll", () => {
+            const rect = counter.getBoundingClientRect();
+            if (!started && rect.top < window.innerHeight) {
+                started = true;
+                animateCounter();
+            }
+        });
+    });
+    </script>
 
 </body>
 </html>

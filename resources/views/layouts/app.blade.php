@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-50">
   <nav class="sticky top-0 z-50 bg-white/80 shadow border-b border-gray-200 transition-all duration-300"
-  style="backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
+  style="backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(1px);">
     <div class="px-24 py-4 flex justify-between items-center">
       <div class="flex items-center space-x-12">
         <a href="{{ route('home') }}" class="text-xl font-bold text-red-600">HemaCheck</a>  
@@ -22,7 +22,7 @@
       <div class="flex items-center space-x-2">
           <img src="{{ asset('img/umi.png') }}" alt="Universitas Muslim Indonesia" class="h-10">
           <img src="{{asset('img/kemenkes.png')}}" alt="Kementrian Kesehatan" class="h-10">
-        </div>
+      </div>
     </div>
   </nav>
 

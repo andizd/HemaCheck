@@ -26,14 +26,12 @@
     </div>
 
     <div class="flex-1 flex justify-center">
-        <img src="https://img.freepik.com/free-vector/healthcare-medical-concept-illustration_114360-2276.jpg" 
+        <img src="{{ asset('img/ilustrasi.png') }}" 
              alt="Health Illustration" 
              class="w-80 drop-shadow-md">
     </div>
 
 </section>
-
-
 
 {{-- INFORMASI ANEMIA --}}
 <section class="mb-12">
@@ -63,11 +61,7 @@
         {{-- CARD 1 — Kekurangan Zat Besi --}}
         <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100">
             <div class="text-red-600 mb-3 text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 6v6l4 2m6-2c0 6.627-5.373 12-12 12S0 20.627 0 14 5.373 2 12 2s12 5.373 12 12z"/>
-                </svg>
+                <img src="img/zat besi.png" alt="Zat Besi" class="h-16 w-16 mx-auto">
             </div>
 
             <h3 class="font-semibold text-lg mb-3 text-center">Kekurangan Zat Besi</h3>
@@ -77,18 +71,10 @@
             </p>
         </div>
 
-
-
         {{-- CARD 2 — Kekurangan Vitamin B12 / Folat --}}
         <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100">
             <div class="text-blue-600 mb-3 text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 8c1.657 0 3 1.343 3 3 0 3-3 5-3 5s-3-2-3-5c0-1.657 1.343-3 3-3z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 2C6.477 2 2 6.477 2 12h2a8 8 0 1116 0h2c0-5.523-4.477-10-10-10z"/>
-                </svg>
+                <img src="img/vitamin b12.png" alt="Vitamin B12" class="h-16 w-18 mx-auto">
             </div>
 
             <h3 class="font-semibold text-lg mb-3 text-center">Kekurangan Vitamin B12 atau Folat</h3>
@@ -98,16 +84,10 @@
             </p>
         </div>
 
-
-
         {{-- CARD 3 — Kehilangan Darah --}}
         <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100">
             <div class="text-purple-600 mb-3 text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 6v12m0 0l4-4m-4 4l-4-4"/>
-                </svg>
+                <img src="img/darah.png" alt="Kehilangan Darah" class="h-16 w-14 mx-auto">
             </div>
 
             <h3 class="font-semibold text-lg mb-3 text-center">Kehilangan Darah</h3>
@@ -117,46 +97,33 @@
             </p>
         </div>
 
-
-
-        {{-- CARD 4 — Penyakit Kronis --}}
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100 md:col-span-1">
-            <div class="text-green-600 mb-3 text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
-                </svg>
+        <div class="md:col-span-3 flex justify-center gap-6 px-32">
+            {{-- CARD 4 — Penyakit Kronis --}}
+            <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100 md:col-span-1">
+                <div class="text-green-600 mb-3 text-center">
+                    <img src="img/ginjal.png" alt="Gagal Ginjal" class="h-16 w-16 mx-auto">
+                </div>
+    
+                <h3 class="font-semibold text-lg mb-3 text-center">Penyakit Kronis</h3>
+    
+                <p class="text-gray-600 text-sm leading-relaxed text-center">
+                    Penyakit seperti gagal ginjal, peradangan kronis, atau gangguan autoimun dapat menurunkan produksi sel darah merah.
+                </p>
             </div>
-
-            <h3 class="font-semibold text-lg mb-3 text-center">Penyakit Kronis</h3>
-
-            <p class="text-gray-600 text-sm leading-relaxed text-center">
-                Penyakit seperti gagal ginjal, peradangan kronis, atau gangguan autoimun dapat menurunkan produksi sel darah merah.
-            </p>
-        </div>
-
-
-
-        {{-- CARD 5 — Infeksi / Kelainan Genetik --}}
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100 md:col-span-1">
-            <div class="text-yellow-600 mb-3 text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 12c2.21 0 4-1.343 4-3s-1.79-3-4-3-4 1.343-4 3 1.79 3 4 3z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 12v6m0 0l3-3m-3 3l-3-3"/>
-                </svg>
+    
+            {{-- CARD 5 — Infeksi / Kelainan Genetik --}}
+            <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition border border-gray-100 md:col-span-1">
+                <div class="text-yellow-600 mb-3 text-center">
+                    <img src="img/infeksi.png" alt="Infeksi" class="h-16 w-18 mx-auto">
+                </div>
+    
+                <h3 class="font-semibold text-lg mb-3 text-center">Infeksi atau Kelainan Genetik</h3>
+    
+                <p class="text-gray-600 text-sm leading-relaxed text-center">
+                    Beberapa infeksi atau kelainan darah genetik dapat mengurangi umur sel darah merah atau mengganggu produksinya.
+                </p>
             </div>
-
-            <h3 class="font-semibold text-lg mb-3 text-center">Infeksi atau Kelainan Genetik</h3>
-
-            <p class="text-gray-600 text-sm leading-relaxed text-center">
-                Beberapa infeksi atau kelainan darah genetik dapat mengurangi umur sel darah merah atau mengganggu produksinya.
-            </p>
         </div>
-
     </div>
 </section>
 

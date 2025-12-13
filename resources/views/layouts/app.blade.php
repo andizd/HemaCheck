@@ -8,7 +8,7 @@
 </head>
 <body class="bg-gray-50">
   <nav class="bg-white shadow">
-    <div class="px-12 py-4 flex justify-between items-center">
+    <div class="px-24 py-4 flex justify-between items-center">
       <div class="flex items-center space-x-12">
         <a href="{{ route('home') }}" class="text-xl font-bold text-red-600">HemaCheck</a>  
         <div class="space-x-4">
@@ -24,7 +24,7 @@
     </div>
   </nav>
 
-  <main class="px-12 py-8">
+  <main class="px-24 py-8">
     @if(session('success'))
       <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4">{{ session('success') }}</div>
     @endif
@@ -32,8 +32,32 @@
     @yield('content')
   </main>
 
-  <footer class="text-center text-sm text-gray-500 py-6">
-    &copy; {{ date('Y') }} HemaCheck. All rights reserved.
+  <footer class="bg-gray-900 text-gray-300 mt-8">
+    <div class="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2">
+
+        {{-- Identitas --}}
+        <div>
+            <h3 class="text-xl font-bold text-white mb-3">HemaCheck</h3>
+            <p class="text-sm leading-relaxed">
+                Platform edukasi dan screening anemia berbasis web untuk membantu
+                masyarakat mengenali risiko anemia secara mandiri.
+            </p>
+        </div>
+
+        {{-- Alamat Kampus --}}
+        <div>
+            <h4 class="text-lg font-semibold text-white mb-3">Alamat Kampus</h4>
+            <p class="text-sm leading-relaxed">
+                Universitas Muslim Indonesia<br>
+                Jl. Urip Sumoharjo No. KM.5 Panaikang, Kota Makassar
+            </p>
+        </div>
+    </div>
+
+    <div class="border-t border-gray-700 text-center py-4 text-sm text-gray-400">
+        © {{ date('Y') }} HemaCheck — Universitas Muslim Indonesia
+    </div>
   </footer>
+
 </body>
 </html>

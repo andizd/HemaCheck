@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Screening;
 use App\models\Respondent;
+use Revolution\Google\Sheets\Facades\Sheets;
 
 class ScreeningController extends Controller
 {
@@ -73,6 +74,44 @@ class ScreeningController extends Controller
             'q15' => $request->q15,
         ]);
 
+        $totalScore =
+            $screening->q1 + $screening->q2 + $screening->q3 +
+            $screening->q4 + $screening->q5 + $screening->q6 +
+            $screening->q7 + $screening->q8 + $screening->q9 +
+            $screening->q10 + $screening->q11 + $screening->q12 +
+            $screening->q13 + $screening->q14 + $screening->q15;
+
+        $risk = $totalScore <= 10 ? 'Rendah' : ($totalScore <= 20 ? 'Sedang' : 'Tinggi');
+
+        Sheets::spreadsheet('18Jr9KC1WevkxbSOlU9rMPQppvjP__h_SW54ZXomhIh8')
+            ->sheet('Sheet1')
+            ->append([
+                [
+                    now()->format('Y-m-d H:i'),
+                    $respondent->name,
+                    $respondent->gender,
+                    $respondent->age,
+                    $respondent->weight,
+                    $respondent->height,
+                    $totalScore,
+                    $risk,
+                    $screening->q1,
+                    $screening->q2,
+                    $screening->q3,
+                    $screening->q4,
+                    $screening->q5,
+                    $screening->q6,
+                    $screening->q7,
+                    $screening->q8,
+                    $screening->q9,
+                    $screening->q10,
+                    $screening->q11,
+                    $screening->q12,
+                    $screening->q13,
+                    $screening->q14,
+                    $screening->q15,
+                ]
+            ]);
 
         session()->forget('respondent');
 

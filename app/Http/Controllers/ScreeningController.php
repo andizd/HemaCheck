@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Screening;
 use App\models\Respondent;
+use Google\Client;
+use Google\Service\Sheets as GoogleSheets;
 use Revolution\Google\Sheets\Facades\Sheets;
 
 class ScreeningController extends Controller
@@ -36,6 +38,7 @@ class ScreeningController extends Controller
 
     public function store(Request $request)
     {
+        
         $respondentData = session('respondent');
 
         if (!$respondentData) {
@@ -82,6 +85,16 @@ class ScreeningController extends Controller
             $screening->q13 + $screening->q14 + $screening->q15;
 
         $risk = $totalScore <= 10 ? 'Rendah' : ($totalScore <= 20 ? 'Sedang' : 'Tinggi');
+
+        $client = new Client();
+        $client->setAuthConfig(storage_path('app/google/credentials.json'));
+        $client->setScopes([GoogleSheets::SPREADSHEETS]);
+        $client->useApplicationDefaultCredentials();
+
+        $service = new GoogleSheets($client);
+
+        // 🔥 INI KUNCI UTAMA
+        Sheets::setService($service);
 
         Sheets::spreadsheet('18Jr9KC1WevkxbSOlU9rMPQppvjP__h_SW54ZXomhIh8')
             ->sheet('Sheet1')

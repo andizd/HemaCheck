@@ -8,54 +8,117 @@ use App\models\Respondent;
 
 class ScreeningController extends Controller
 {
-    public function create(){
-        return view('screening.create');
+    public function identity(){
+        return view('screening.identity');
     }
 
-    public function store(Request $request){
+    public function storeIdentity(Request $request)
+    {
         $request->validate([
-            'name' => 'nullable|string|max:255',
-            'gender' => 'nullable|in:Laki-Laki,Perempuan',
-            'age' => 'nullable|integer|min:0|max:120',
-            // validate q1..q15 numeric 0-2
+            'gender' => 'required',
+            'age' => 'required|numeric',
         ]);
 
-        for ($i=1; $i<=15; $i++) {
-            $request->validate(["q$i" => 'required|integer|min:0|max:2']);
+        session(['respondent' => $request->all()]);
+
+        return redirect()->route('screening.questions');
+    }
+
+    public function questions()
+    {
+        if (!session()->has('respondent')) {
+            return redirect()->route('screening.identity');
         }
 
-        $resp = Respondent::create([
-            'name' => $request->input('name'),
-            'gender' => $request->input('gender'),
-            'age' => $request->input('age'),
-            'occupation' => $request->input('occupation'),
-            'education' => $request->input('education'),
-            'weight' => $request->input('weight'),
-            'height' => $request->input('height'),
+        return view('screening.questions');
+    }
+
+    public function store(Request $request)
+    {
+        $respondentData = session('respondent');
+
+        if (!$respondentData) {
+            return redirect()
+                ->route('screening.identity')
+                ->with('error', 'Silakan isi identitas terlebih dahulu.');
+        }
+        // simpan ke tabel respondents
+        $respondent = Respondent::create([
+            'name' => $respondentData['name'] ?? null,
+            'gender' => $respondentData['gender'],
+            'age' => $respondentData['age'],
+            'occupation' => $respondentData['occupation'] ?? null,
+            'education' => $respondentData['education'] ?? null,
+            'weight' => $respondentData['weight'] ?? null,
+            'height' => $respondentData['height'] ?? null,
         ]);
 
-        $total = 0;
-        $data = ['respondent_id' => $resp->id];
-        for ($i=1; $i<=15; $i++) {
-            $val = (int) $request->input("q$i", 0);
-            $data["q$i"] = $val;
-            $total += $val;
-        }
+        // simpan jawaban screening
+        $screening = Screening::create([
+            'respondent_id' => $respondent->id,
+            'q1' => $request->q1,
+            'q2' => $request->q2,
+            'q3' => $request->q3,
+            'q4' => $request->q4,
+            'q5' => $request->q5,
+            'q6' => $request->q6,
+            'q7' => $request->q7,
+            'q8' => $request->q8,
+            'q9' => $request->q9,
+            'q10' => $request->q10,
+            'q11' => $request->q11,
+            'q12' => $request->q12,
+            'q13' => $request->q13,
+            'q14' => $request->q14,
+            'q15' => $request->q15,
+        ]);
 
-        if ($total <= 6) $kategori = 'Rendah';
-        elseif ($total <= 13) $kategori = 'Sedang';
-        else $kategori = 'Tinggi';
 
-        $data['total_score'] = $total;
-        $data['kategori'] = $kategori;
+        session()->forget('respondent');
 
-        $screening = Screening::create($data);
-
-        // redirect ke halaman hasil (atau tampilkan langsung)
         return redirect()->route('screening.result', $screening->id);
     }
 
-    public function result(Screening $screening){
-        return view('screening.result', compact('screening'));
+    public function result(Screening $screening)
+    {
+        // hitung total skor
+        $totalScore =
+            $screening->q1 + $screening->q2 + $screening->q3 +
+            $screening->q4 + $screening->q5 + $screening->q6 +
+            $screening->q7 + $screening->q8 + $screening->q9 +
+            $screening->q10 + $screening->q11 + $screening->q12 +
+            $screening->q13 + $screening->q14 + $screening->q15;
+
+        // klasifikasi risiko (bisa disesuaikan)
+        if ($totalScore <= 6) {
+            $risk = 'Rendah';
+            $color = 'green';
+            $message = 'Kondisi cukup baik, lanjutkan perilaku sehat.';
+            $advice = 'Tetap jaga pola makan sehat dan lakukan pemeriksaan rutin.';
+            $background = 'green';
+        } elseif ($totalScore >= 7 && $totalScore <= 13) {
+            $risk = 'Sedang';
+            $color = 'yellow';
+            $message = 'Ada faktor risiko, perlu pemantauan.';
+            $advice = 'Perhatikan asupan zat besi dan vitamin, serta pertimbangkan konsultasi tenaga kesehatan.';
+            $background = 'yellow';
+        } else {
+            $risk = 'Tinggi';
+            $color = 'red';
+            $message = 'Risiko anemia Anda tergolong tinggi.';
+            $advice = 'Sangat disarankan untuk memeriksakan diri ke fasilitas kesehatan terdekat.';
+            $background = 'red';
+        }
+
+        return view('screening.result', compact(
+            'screening',
+            'totalScore',
+            'risk',
+            'color',
+            'message',
+            'advice',
+            'background'
+        ));
     }
+
 }

@@ -2,40 +2,11 @@
 
 @section('content')
 
-<h1 class="text-2xl font-bold mb-6">Screening Risiko Anemia</h1>
+<h1 class="text-2xl font-bold mb-6" data-aos="fade-right">Screening Risiko Anemia</h1>
 
 <form action="{{ route('screening.store') }}" method="POST"
-      class="bg-white p-8 rounded-xl shadow border border-gray-100">
+    class="bg-white p-8 rounded-xl shadow border border-gray-100" data-aos="fade-up" data-aos-delay="100">
     @csrf
-
-    {{-- IDENTITAS RESPONDEN --}}
-    <h2 class="text-xl font-semibold mb-4">Identitas Responden</h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-        <input type="text" name="name" placeholder="Nama (opsional)"
-               class="border p-3 rounded">
-
-        <select name="gender" class="border p-3 rounded">
-            <option value="">Jenis Kelamin</option>
-            <option value="Laki-Laki">Laki-Laki</option>
-            <option value="Perempuan">Perempuan</option>
-        </select>
-
-        <input type="number" name="age" placeholder="Umur"
-               class="border p-3 rounded">
-
-        <input type="text" name="occupation" placeholder="Pekerjaan"
-               class="border p-3 rounded">
-
-        <input type="text" name="education" placeholder="Pendidikan Terakhir"
-               class="border p-3 rounded">
-
-        <input type="number" step="0.1" name="weight" placeholder="Berat Badan (kg)"
-               class="border p-3 rounded">
-
-        <input type="number" step="0.1" name="height" placeholder="Tinggi Badan (cm)"
-               class="border p-3 rounded">
-    </div>
 
     {{-- PERTANYAAN SCREENING --}}
     <h2 class="text-xl font-semibold mb-6">Pertanyaan Screening</h2>
@@ -60,7 +31,7 @@
         </p>
         @php opsi('q1', [
             0 => 'Tidak ada gejala',
-            1 => 'Gejala ringan (1–2 gejala)',
+            1 => 'Gejala ringan (1-2 gejala)',
             2 => 'Gejala jelas (lebih dari 2 gejala)'
         ]) @endphp
     </div>
@@ -96,7 +67,7 @@
         </p>
         @php opsi('q4', [
             0 => 'Lebih dari 5 hari dalam seminggu',
-            1 => '3–4 hari dalam seminggu',
+            1 => '3-4 hari dalam seminggu',
             2 => 'Kurang dari 2 hari dalam seminggu'
         ]) @endphp
     </div>
@@ -144,7 +115,7 @@
         </p>
         @php opsi('q8', [
             0 => 'Tidak pernah atau jarang',
-            1 => '1–2 kali dalam seminggu',
+            1 => '1-2 kali dalam seminggu',
             2 => 'Lebih dari 2 kali dalam seminggu'
         ]) @endphp
     </div>
@@ -176,7 +147,7 @@
     {{-- Q11 --}}
     <div class="mb-6">
         <p class="font-medium text-lg mb-2">
-            11. Apakah Anda mengalami jantung berdebar?
+            11. Apakah Anda mengalami jantung berdebar atau detak terasa cepat?
         </p>
         @php opsi('q11', [
             0 => 'Tidak',
@@ -192,8 +163,8 @@
         </p>
         @php opsi('q12', [
             0 => 'Tidak ada',
-            1 => 'Ada tetapi tidak pasti',
-            2 => 'Ada dan sudah pasti'
+            1 => 'Ya, tidak pasti',
+            2 => 'Ya, pasti'
         ]) @endphp
     </div>
 
@@ -215,9 +186,9 @@
             14. Seberapa sering Anda mengonsumsi minuman berkafein seperti kopi atau teh?
         </p>
         @php opsi('q14', [
-            0 => 'Kurang dari satu gelas per hari',
-            1 => 'Satu sampai dua gelas per hari',
-            2 => 'Lebih dari dua gelas per hari'
+            0 => 'Kurang dari 1 gelas per hari',
+            1 => '1 sampai 2 gelas per hari',
+            2 => 'Lebih dari 2 gelas per hari'
         ]) @endphp
     </div>
 
@@ -232,11 +203,16 @@
             2 => 'Pernah'
         ]) @endphp
     </div>
-
-    <button type="submit"
-        class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition hover:scale-105 shadow">
-        Kirim Screening
-    </button>
+    <div class="flex gap-4 items-center">
+        <a href="{{ route('screening.identity') }}"
+            class="bg-gray-200 px-8 py-3 rounded-lg font-semibold shadow">
+            Kembali
+        </a>
+        <button type="submit"
+            class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition hover:scale-105 shadow">
+            Kirim Screening
+        </button>
+    </div>
 
 </form>
 

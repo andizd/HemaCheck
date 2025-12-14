@@ -19,7 +19,7 @@
             memengaruhi aktivitas harian.
         </p>
 
-        <a href="{{ route('screening.create') }}" 
+        <a href="{{ route('screening.identity') }}" 
            class="inline-block mt-6 bg-red-600 hover:bg-red-700 transition text-white px-6 py-3 rounded-lg font-semibold shadow" data-aos="zoom-in" data-aos-delay="200">
             Mulai Screening Sekarang
         </a>
@@ -218,7 +218,7 @@
     <h2 class="text-2xl font-bold text-gray-800 mb-3">Siap mulai screening?</h2>
     <p class="text-gray-600 mb-5">Jawab beberapa pertanyaan untuk mengetahui potensi anemia Anda.</p>
 
-    <a href="{{ route('screening.create') }}" 
+    <a href="{{ route('screening.identity') }}" 
        class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold shadow transition">
         Mulai Screening
     </a>

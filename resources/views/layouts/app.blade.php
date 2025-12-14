@@ -15,7 +15,7 @@
         <a href="{{ route('home') }}" class="text-xl font-bold text-red-600">HemaCheck</a>  
         <div class="space-x-4">
           <a href="{{ route('home') }}">Beranda</a>
-          <a href="{{ route('screening.create') }}">Screening</a>
+          <a href="{{ route('screening.identity') }}">Screening</a>
           <a href="{{ route('feedback') }}">Saran & Masukkan</a>
         </div>
       </div>
